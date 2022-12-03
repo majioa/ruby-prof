@@ -25,7 +25,7 @@ module Rack
 
       if should_profile?(request.path)
         begin
-          result = nil
+          result = [nil, {}]
           data = ::RubyProf::Profile.profile(profiling_options) do
             result = @app.call(env)
           end
